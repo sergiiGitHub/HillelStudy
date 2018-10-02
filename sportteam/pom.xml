@@ -7,20 +7,16 @@
     <groupId>com.sport.team</groupId>
     <artifactId>sport-team</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>jdbc</module>
+    </modules>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <properties>
         <compiler.version>3.3</compiler.version>
+        <jdbc.version>5.1.9</jdbc.version>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.9</version>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
