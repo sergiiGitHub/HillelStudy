@@ -1,1 +1,6 @@
 sportteam/.idea/*
+*.iml
+*.class
+*.jar
+*.lst
+

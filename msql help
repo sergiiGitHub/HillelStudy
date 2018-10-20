@@ -1,0 +1,82 @@
+MySql
+
+fBEBaFDdSfe7ImCr
+my pswd 1
+
+sudo apt-get update 
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04
+
+ps ax | grep mysql
+sudo service mysql start
+
+sudo /etc/init.d/mysql start
+sudo /etc/init.d/mysql stop
+
+sudo mysqld_safe --skip-grant-tables &
+
+#Error
+2018-10-18T18:20:17.760978Z mysqld_safe Directory '/var/run/mysqld' for UNIX socket file don't exists.
+
+>> sudo mkdir -p /var/run/mysqld
+>> sudo chown mysql:mysql /var/run/mysqld
+>> sudo chown mysql:mysql /usr/sbin/mysqld 
+
+mysql -uroot
+
+update user set password=PASSWORD("pass") where User='root';
+#Error
+ERROR 1054 (42S22): Unknown column 'password' in 'field list'
+>> update user set authentication_string=password('123') where user='root'
+
+
+sudo /etc/init.d/mysql stop
+
+sudo systemctl stop mysql.service
+sudo systemctl start mysql.service
+
+mysql -u root -p
+
+show databases
+create database userdb;
+use userdb;
+
+systemctl status mysql.service
+
+mysqld.pid (code=exited, status=1/FAILURE)
+
+
+//-----------------------
+sudo cat /etc/mysql/debian.cnf
+user     = debian-sys-maint
+password = blahblahblah
+
+$ mysql -u debian-sys-maint -p
+Enter password: // type 'blahblahblah', ie. password from debian.cnf
+
+mysql> USE mysql
+mysql> SELECT User, Host, plugin FROM mysql.user;
++------------------+-----------+-----------------------+
+| User             | Host      | plugin                |
++------------------+-----------+-----------------------+
+| root             | localhost | auth_socket           |
+| mysql.session    | localhost | mysql_native_password |
+| mysql.sys        | localhost | mysql_native_password |
+| debian-sys-maint | localhost | mysql_native_password |
++------------------+-----------+-----------------------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '1';
+mysql> FLUSH PRIVILEGES;
+mysql> COMMIT;  // When you don't have auto-commit switched on in your CLI
+mysql> EXIT
+
+$ sudo service mysql restart
+$ mysql -u root -p
+Enter password: // Yay! 'new_password' now works!
+
+
+show databases;
+create database userdb;
+use userdb;
+
