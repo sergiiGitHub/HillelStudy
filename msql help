@@ -75,8 +75,17 @@ $ sudo service mysql restart
 $ mysql -u root -p
 Enter password: // Yay! 'new_password' now works!
 
-
+#command -----------------
 show databases;
 create database userdb;
 use userdb;
+show tables;
+ets
+https://gist.github.com/hofmannsven/9164408
+-------------------------------------
+
+
+
+
+
 

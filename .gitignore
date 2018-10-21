@@ -3,4 +3,4 @@ sportteam/.idea/*
 *.class
 *.jar
 *.lst
-
+sportteam/jdbc/target/*

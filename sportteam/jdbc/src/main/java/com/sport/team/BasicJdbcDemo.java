@@ -68,7 +68,7 @@ public class BasicJdbcDemo {
         Connection conn = null;
         PreparedStatement stmt = null;
 
-        try{
+        try {
             conn = connection();
 
             stmt = conn.prepareStatement("INSERT INTO Users VALUES(?, ?, ?, ?)");
@@ -96,7 +96,7 @@ public class BasicJdbcDemo {
         } catch (Exception e) {
             e.printStackTrace();
 
-            if(conn != null)
+            if (conn != null)
                 conn.rollback();
 
         } finally {
@@ -116,7 +116,7 @@ public class BasicJdbcDemo {
 
         PreparedStatement stmt = null;
 
-        try(Connection conn = connection()){
+        try (Connection conn = connection()) {
 
             stmt = conn.prepareStatement("INSERT INTO Tools VALUES(?, ?)");
             stmt.setInt(1, tool.getId());
@@ -142,7 +142,7 @@ public class BasicJdbcDemo {
 
         PreparedStatement stmt = null;
 
-        try(Connection conn = connection()){
+        try (Connection conn = connection()) {
 
             stmt = conn.prepareStatement("INSERT INTO Skills VALUES(?, ?)");
             stmt.setInt(1, skill.getId());
@@ -169,7 +169,7 @@ public class BasicJdbcDemo {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        try (Connection conn = connection()){
+        try (Connection conn = connection()) {
 
             stmt = conn.prepareStatement("SELECT Users.id, Users.name, Users.email, Users.phone FROM Users WHERE Users.id =?");
             stmt.setInt(1, id);
@@ -236,12 +236,13 @@ public class BasicJdbcDemo {
      */
     private static Connection connection() throws SQLException, ClassNotFoundException {
         MysqlDataSource dataSource = new MysqlDataSource();
+
         dataSource.setUrl("jdbc:mysql://localhost:3306/userdb");
         dataSource.setUser("root");
-        dataSource.setPassword("admin");
+        dataSource.setPassword("1");
 
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dataSource.getUrl(), dataSource.getUser(), "admin");
+        Connection conn = DriverManager.getConnection(dataSource.getUrl(), dataSource.getUser(), "1");
         conn.setAutoCommit(true);
         return conn;
     }
@@ -263,10 +264,8 @@ public class BasicJdbcDemo {
             conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             conn.setAutoCommit(false);
 
-            stmt = conn.prepareStatement("CREATE TABLE Users(id INT PRIMARY KEY, name VARCHAR(255), "
+            stmt = addTable(conn, "CREATE TABLE Users(id INT PRIMARY KEY, name VARCHAR(255), "
                     + "email VARCHAR(255), phone VARCHAR(255))");
-            stmt.executeUpdate();
-            stmt.close();
             stmt = conn.prepareStatement("CREATE TABLE Tools(id INT PRIMARY KEY, name VARCHAR(255))");
             stmt.executeUpdate();
             stmt.close();
@@ -292,5 +291,12 @@ public class BasicJdbcDemo {
                 conn.close();
             }
         }
+    }
+
+    private static PreparedStatement addTable(Connection conn, String str) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement(str);
+        stmt.executeUpdate();
+        stmt.close();
+        return stmt;
     }
 }
