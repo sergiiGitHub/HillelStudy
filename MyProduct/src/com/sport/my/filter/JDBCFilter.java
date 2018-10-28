@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.util.Collection;
 import java.util.Map;
 
-@WebFilter(filterName = "jdbcFilter", urlPatterns = { "/productList" })
+@WebFilter(filterName = "jdbcFilter", urlPatterns = { "/*" })
 public class JDBCFilter implements Filter {
  
    public JDBCFilter() {
@@ -55,8 +55,9 @@ public class JDBCFilter implements Filter {
            throws IOException, ServletException {
  
        HttpServletRequest req = (HttpServletRequest) request;
-       if (this.needJDBC(req)) {
+       if (needJDBC(req)) {
            System.out.println("Open Connection for: " + req.getServletPath());
+           // TODO: 28.10.18 could take from Utils?
            Connection conn = null;
            try {
                conn = ConnectionUtils.getConnection();
@@ -71,9 +72,7 @@ public class JDBCFilter implements Filter {
            } finally {
                ConnectionUtils.closeQuietly(conn);
            }
-       }
- 
-       else {
+       } else {
            chain.doFilter(request, response);
        }
    }

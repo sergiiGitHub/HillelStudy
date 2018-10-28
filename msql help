@@ -89,8 +89,8 @@ create table product_tbl (
    product_price FLOAT NOT NULL,
    PRIMARY KEY ( product_id )
 );
-
-insert into product_tbl (NAME, PRICE) values ('Java EE', 100);
+-------------------------------------
+insert into product_tbl (product_name, product_price) values ('Java EE', 100);
 -------------------------------------
 describe product_tb 
 SHOW COLUMNS FROM product_tbl

@@ -42,4 +42,23 @@ public class DbUtils {
         }
         return result;
     }
+
+    public static void insertProduct(HttpServletRequest request, Product product) throws SQLException {
+        Connection conn = Utils.getStoredConnection(request);
+        if (conn == null) {
+            return;
+        }
+
+        String sql = "insert into product_tbl (product_name, product_price) values(?,?)";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, product.getName());
+        pstm.setFloat(2, product.getPrice());
+        int id = pstm.executeUpdate();
+        if (id == Product.UNDEFINED) {
+            // TODO: 28.10.18 throw error
+            throw new SQLException();
+        } else {
+            product.setCode(id);
+        }
+    }
 }

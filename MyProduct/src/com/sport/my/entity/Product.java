@@ -4,9 +4,16 @@ package com.sport.my.entity;
  * Created by sergii on 27.10.18.
  */
 public class Product {
+
+    public static final int UNDEFINED = -1;
+
     private int code;
     private String name;
     private float price;
+
+    public Product(String name, float price) {
+        this(UNDEFINED, name, price);
+    }
 
     public Product(int code, String name, float price) {
         setCode(code);
