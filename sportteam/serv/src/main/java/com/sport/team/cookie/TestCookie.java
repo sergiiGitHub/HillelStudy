@@ -1,4 +1,4 @@
-package cookie;
+package com.sport.team.cookie;
 
 /**
  * Created by sergii on 26.10.18.
@@ -20,47 +20,47 @@ public class TestCookie extends HttpServlet  {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
+     * @param request com.sport.team.servlet request
+     * @param response com.sport.team.servlet response
+     * @throws ServletException if a com.sport.team.servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/com.sport.team.html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
+            out.println("<!DOCTYPE com.sport.team.html>");
+            out.println("<com.sport.team.html>");
             out.println("<head>");
             out.println("<title>Servlet TestCookie</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TestCookie at " + request.getContextPath() + "</h1>");
             SessionCookieConfig cookies = request.getServletContext().getSessionCookieConfig();
-            out.println("Found cookie: " + cookies.getName());
+            out.println("Found com.sport.team.cookie: " + cookies.getName());
 
             Cookie cookie = new Cookie("myCookieKey", "myCookieValue");
             cookie.setMaxAge(24 * 60 * 60);
             response.addCookie(cookie);
-            out.println("<br><br>Set a new cookie");
+            out.println("<br><br>Set a new com.sport.team.cookie");
 
             cookie = new Cookie("myHttpOnlyCookieKey", "myHttpOnlyCookieValue");
             cookie.setHttpOnly(true);
             cookie.setMaxAge(24 * 60 * 60);
             response.addCookie(cookie);
             out.println("<br>Set a new HTTPOnly Cookie<br><br>");
-            out.println("Check what cookie are visible by");
+            out.println("Check what com.sport.team.cookie are visible by");
             out.println("<a href=\"http://"
                     + request.getServerName()
                     + ":"
                     + request.getServerPort()
                     + request.getContextPath()
-                    + "/index-cookie.jsp\">clicking here</a>");
+                    + "/index-com.sport.team.cookie.jsp\">clicking here</a>");
 
             out.println("</body>");
-            out.println("</html>");
+            out.println("</com.sport.team.html>");
         }
     }
 
@@ -69,9 +69,9 @@ public class TestCookie extends HttpServlet  {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
+     * @param request com.sport.team.servlet request
+     * @param response com.sport.team.servlet response
+     * @throws ServletException if a com.sport.team.servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
 
@@ -83,9 +83,9 @@ public class TestCookie extends HttpServlet  {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
+     * @param request com.sport.team.servlet request
+     * @param response com.sport.team.servlet response
+     * @throws ServletException if a com.sport.team.servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
@@ -95,9 +95,9 @@ public class TestCookie extends HttpServlet  {
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Returns a short description of the com.sport.team.servlet.
      *
-     * @return a String containing servlet description
+     * @return a String containing com.sport.team.servlet description
      */
     @Override
     public String getServletInfo() {

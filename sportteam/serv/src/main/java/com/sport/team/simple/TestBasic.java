@@ -1,4 +1,4 @@
-package simple;
+package com.sport.team.simple;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +16,10 @@ public class TestBasic extends HttpServlet {
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.setContentType("text/html;charset=UTF-8");
+        resp.setContentType("text/com.sport.team.html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
+            out.println("<!DOCTYPE com.sport.team.html>");
+            out.println("<com.sport.team.html>");
             out.println("<head>");
             out.println("<title>Web Fragment with output from Servlet Filter</title>");
             out.println("</head>");
@@ -27,7 +27,7 @@ public class TestBasic extends HttpServlet {
             out.println("<h1>Web Fragment with output from Servlet Filter</h1>");
             out.println("<br><br>Check server log for output from LoggingFilter");
             out.println("</body>");
-            out.println("</html>");
+            out.println("</com.sport.team.html>");
         }
     }
 

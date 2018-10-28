@@ -1,4 +1,4 @@
-package simple;
+package com.sport.team.dispatcher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,16 +11,10 @@ import java.io.IOException;
  * Created by sergii on 23.10.18.
  */
 
-@WebServlet("/SimpleServlet")
-public class SimpleServlet extends HttpServlet {
-
+@WebServlet("/dispatcher")
+public class DispatcherServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print("my GET");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print("do POST");
+        req.getRequestDispatcher("WEB-INF/jsp/test.jsp").forward(req,resp);
     }
 }

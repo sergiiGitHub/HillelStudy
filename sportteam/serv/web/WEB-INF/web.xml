@@ -6,12 +6,22 @@
 
     <servlet>
         <servlet-name>Simple</servlet-name>
-        <servlet-class>simple.SimpleServlet</servlet-class>
+        <servlet-class>com.sport.team.simple.SimpleServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>Simple</servlet-name>
-        <url-pattern>/test-simple</url-pattern>
+        <url-pattern>/test-com.sport.team.simple</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SimpleProductList</servlet-name>
+        <servlet-class>com.sport.team.servlet.ProductList</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SimpleProductList</servlet-name>
+        <url-pattern>/test-productList</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

@@ -24,5 +24,6 @@
     Invoke the <a href="${pageContext.request.contextPath}/MyAsyncServlet"/>Async Servlet</a>.
     <div>Test request dispatcher and forward to WEB-INF folder  <a href="${pageContext.request.contextPath}/dispatcher">Dispacther</a>  </div>
     <div>Try Login  <a href="${pageContext.request.contextPath}/login-test.html">Login</a>  </div>
+    <div> <a href="${pageContext.request.contextPath}/productList">Product</a>  </div>
   </body>
 </html>

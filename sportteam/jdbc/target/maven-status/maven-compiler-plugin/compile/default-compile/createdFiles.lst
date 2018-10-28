@@ -1,5 +1,7 @@
-com/sport/team/BasicJdbcDemo.class
-com/sport/team/entity/User.class
 com/sport/team/entity/Tool.class
+com/sport/team/ConnectionUtils.class
+com/sport/team/BasicJdbcDemo.class
+com/sport/team/entity/Product.class
+com/sport/team/entity/User.class
 com/sport/team/entity/Community.class
 com/sport/team/entity/Skill.class

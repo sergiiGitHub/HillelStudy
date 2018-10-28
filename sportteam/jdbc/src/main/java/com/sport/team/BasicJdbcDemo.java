@@ -1,6 +1,6 @@
 package com.sport.team;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
 import com.sport.team.entity.Skill;
 import com.sport.team.entity.Tool;
 import com.sport.team.entity.User;
@@ -69,7 +69,7 @@ public class BasicJdbcDemo {
         PreparedStatement stmt = null;
 
         try {
-            conn = connection();
+            conn = ConnectionUtils.getConnection();
 
             stmt = conn.prepareStatement("INSERT INTO Users VALUES(?, ?, ?, ?)");
             stmt.setInt(1, user.getId());
@@ -116,7 +116,7 @@ public class BasicJdbcDemo {
 
         PreparedStatement stmt = null;
 
-        try (Connection conn = connection()) {
+        try (Connection conn = ConnectionUtils.getConnection()) {
 
             stmt = conn.prepareStatement("INSERT INTO Tools VALUES(?, ?)");
             stmt.setInt(1, tool.getId());
@@ -142,7 +142,7 @@ public class BasicJdbcDemo {
 
         PreparedStatement stmt = null;
 
-        try (Connection conn = connection()) {
+        try (Connection conn = ConnectionUtils.getConnection()) {
 
             stmt = conn.prepareStatement("INSERT INTO Skills VALUES(?, ?)");
             stmt.setInt(1, skill.getId());
@@ -169,7 +169,7 @@ public class BasicJdbcDemo {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        try (Connection conn = connection()) {
+        try (Connection conn = ConnectionUtils.getConnection()) {
 
             stmt = conn.prepareStatement("SELECT Users.id, Users.name, Users.email, Users.phone FROM Users WHERE Users.id =?");
             stmt.setInt(1, id);
@@ -234,18 +234,6 @@ public class BasicJdbcDemo {
      * @throws SQLException           the SQL exception
      * @throws ClassNotFoundException the class not found exception
      */
-    private static Connection connection() throws SQLException, ClassNotFoundException {
-        MysqlDataSource dataSource = new MysqlDataSource();
-
-        dataSource.setUrl("jdbc:mysql://localhost:3306/userdb");
-        dataSource.setUser("root");
-        dataSource.setPassword("1");
-
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dataSource.getUrl(), dataSource.getUser(), "1");
-        conn.setAutoCommit(true);
-        return conn;
-    }
 
     /**
      * Inits the db.
@@ -258,7 +246,7 @@ public class BasicJdbcDemo {
         PreparedStatement stmt = null;
 
         try {
-            conn = connection();
+            conn = ConnectionUtils.getConnection();
 
             conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);

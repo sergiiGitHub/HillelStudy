@@ -1,4 +1,4 @@
-package html;
+package com.sport.team.html;
 
 /**
  * Created by sergii on 26.10.18.

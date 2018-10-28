@@ -1,4 +1,4 @@
-package html;
+package com.sport.team.html;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by sergii on 26.10.18.
  */
-@WebServlet (urlPatterns = {"/html-servlet", "/servlet-html"})
+@WebServlet (urlPatterns = {"/com.sport.team.html-com.sport.team.servlet", "/com.sport.team.servlet-com.sport.team.html"})
 public class HtmlServlet extends HttpServlet {
 
     @Override
@@ -21,7 +21,7 @@ public class HtmlServlet extends HttpServlet {
         User user = new User(l, p);
 
         req.setAttribute("user", user);
-        req.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login-html.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login-com.sport.team.html.jsp").forward(req, resp);
     }
 
 //    String login = req.getParameter("login");
@@ -32,5 +32,5 @@ public class HtmlServlet extends HttpServlet {
 //
 //        req.setAttribute("user", user);
 //
-//        req.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login-html.jsp").forward(req, resp);
+//        req.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login-com.sport.team.html.jsp").forward(req, resp);
 }

@@ -1,4 +1,4 @@
-package dynamic;
+package com.sport.team.dynamic;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +12,11 @@ import java.io.IOException;
 public class DynamicServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print("dynamic Get");
+        resp.getWriter().print("com.sport.team.dynamic Get");
     }
 
     @Override
     public String getServletInfo() {
-        return "My dynamic awesome servlet!";
+        return "My dynamic awesome com.sport.team.servlet!";
     }
 }
