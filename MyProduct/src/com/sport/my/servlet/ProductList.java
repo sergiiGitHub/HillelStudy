@@ -23,7 +23,6 @@ public class ProductList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         String errorString = null;
         List<Product> list = null;
         try {
@@ -31,6 +30,8 @@ public class ProductList extends HttpServlet {
         } catch (SQLException e) {
             errorString = e.getMessage();
         }
+
+        System.out.print("DO_GET:" + list);
 
         request.setAttribute("errorString", errorString);
         request.setAttribute("productList", list);

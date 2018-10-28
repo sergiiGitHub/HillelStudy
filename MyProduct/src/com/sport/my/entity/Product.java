@@ -4,8 +4,15 @@ package com.sport.my.entity;
  * Created by sergii on 27.10.18.
  */
 public class Product {
+    private int code;
     private String name;
     private float price;
+
+    public Product(int code, String name, float price) {
+        setCode(code);
+        setName(name);
+        setPrice(price);
+    }
 
     public String getName() {
         return name;
@@ -21,5 +28,18 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + code + ":" + name + ":" + price + "}";
     }
 }

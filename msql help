@@ -82,7 +82,19 @@ use userdb;
 show tables;
 ets
 https://gist.github.com/hofmannsven/9164408
+
+create table product_tbl (
+   product_id INT NOT NULL AUTO_INCREMENT,
+   product_name VARCHAR(100) NOT NULL,
+   product_price FLOAT NOT NULL,
+   PRIMARY KEY ( product_id )
+);
+
+insert into product_tbl (NAME, PRICE) values ('Java EE', 100);
 -------------------------------------
+describe product_tb 
+SHOW COLUMNS FROM product_tbl
+SELECT * FROM product_tbl;
 
 
 

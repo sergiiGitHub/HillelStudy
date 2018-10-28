@@ -9,11 +9,13 @@ import java.sql.Connection;
  */
 public class Utils {
 
+    private static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
+
     public static Connection getStoredConnection(HttpServletRequest req) {
-        return null;
+        return (Connection)req.getAttribute(ATT_NAME_CONNECTION);
     }
 
     public static void storeConnection(ServletRequest request, Connection conn) {
-
+        request.setAttribute(ATT_NAME_CONNECTION, conn);
     }
 }
