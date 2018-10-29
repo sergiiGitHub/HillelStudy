@@ -13,8 +13,10 @@
 
     <p style="color: red;">${errorString}</p>
 
-    <form method="POST" action="insertProduct" >
+    <form method="POST" action="updateProduct">
+        <input type="hidden" name="code" value="${product.code}">
        <table border="0">
+
           <tr>
              <td>Name</td>
              <td><input type="text" name="name" value="${product.name}" /></td>

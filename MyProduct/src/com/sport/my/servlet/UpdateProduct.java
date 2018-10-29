@@ -2,7 +2,6 @@ package com.sport.my.servlet;
 
 import com.sport.my.entity.Product;
 import com.sport.my.utils.DbUtils;
-import com.sport.my.utils.Utils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,33 +15,31 @@ import java.sql.SQLException;
 /**
  * Created by sergii on 28.10.18.
  */
-@WebServlet(urlPatterns = { "/insertProduct" })
-public class InsertProduct extends HttpServlet {
+@WebServlet(urlPatterns = { "/updateProduct" })
+public class UpdateProduct extends HttpServlet {
     private final String regex = "\\w+";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String code =  request.getParameter("code");
+        //System.out.println("UpdateProduct:code:" + code);
         String name =  request.getParameter("name");
         String priceStr = request.getParameter("price");
         float price = 0;
+        int intCode = Product.UNDEFINED;
         try {
+            intCode = Integer.parseInt(code);
             price = Float.parseFloat(priceStr);
         } catch (Exception e) {}
-        Product product = new Product(name, price);
+        Product product = new Product(intCode, name, price);
         String errorString = null;
         if (!name.matches(regex)) {
             errorString = "name invalid!";
         }
         if (errorString == null) {
             try {
-                Object edit = request.getAttribute("edit");
-                if (edit == null) {
-                    DbUtils.insertProduct(request, product);
-                } else {
-
-                    request.removeAttribute("edit");
-                }
+                 DbUtils.updateProduct(request, product);
             } catch (SQLException e) {
                 errorString = e.getMessage();
             }

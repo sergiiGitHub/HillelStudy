@@ -61,4 +61,54 @@ public class DbUtils {
             product.setCode(id);
         }
     }
+
+    public static Product getProductBy(HttpServletRequest request, int id) {
+        Connection conn = Utils.getStoredConnection(request);
+        String sql = "select product_name, product_price from product_tbl where product_id=?";
+
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                String name = rs.getString("product_name");
+                float price = rs.getFloat("product_price");
+                return new Product(id, name, price);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+        //String sql = "select a.Code, a.Name, a.Price from PRODUCT a where a.Code =?";
+
+//        PreparedStatement pstm = conn.prepareStatement(sql);
+//        pstm.setString(1, code);
+
+
+    }
+
+    public static void updateProduct(HttpServletRequest request, Product product) throws SQLException {
+        Connection conn = Utils.getStoredConnection(request);
+        String sql = "update product_tbl set product_name=?, product_price =? where product_id=?";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, product.getName());
+        pstm.setFloat(2, product.getPrice());
+        pstm.setFloat(3, product.getCode());
+
+        pstm.executeUpdate();
+
+    }
+
+    public static void deleteProduct(HttpServletRequest request, int id) throws SQLException {
+        Connection conn = Utils.getStoredConnection(request);
+        String sql = "delete from product_tbl where product_id=?";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, id);
+
+        pstm.executeUpdate();
+    }
 }

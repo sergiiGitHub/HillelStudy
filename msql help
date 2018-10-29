@@ -96,8 +96,5 @@ describe product_tb
 SHOW COLUMNS FROM product_tbl
 SELECT * FROM product_tbl;
 
-
-
-
-
+select product_name, product_price from product_tbl where product_id=1;
 
