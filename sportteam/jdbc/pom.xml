@@ -11,13 +11,6 @@
 
     <artifactId>jdbc</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${jdbc.version}</version>
-        </dependency>
-    </dependencies>
 
 
 </project>

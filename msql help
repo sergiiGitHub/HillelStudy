@@ -98,3 +98,23 @@ SELECT * FROM product_tbl;
 
 select product_name, product_price from product_tbl where product_id=1;
 
+-----------------------------------
+
+create table cars (
+   id INT NOT NULL AUTO_INCREMENT,
+   cost FLOAT NOT NULL,
+   name VARCHAR(100) NOT NULL,
+   date datetime NOT NULL,
+   PRIMARY KEY ( product_id )
+);
+
+insert into cars (cost, name, date) values (100, 'BMW', 2017-09-09);
+
+
+create table seller (
+   id INT NOT NULL AUTO_INCREMENT,
+   age int(11) DEFAULT NULL,
+   full_name VARCHAR(100) DEFAULT NULL,
+   salary float DEFAULT NULL,
+   PRIMARY KEY ( product_id )
+);
