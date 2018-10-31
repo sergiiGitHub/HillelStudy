@@ -46,4 +46,9 @@ public class Car {
     public void setReleaseDate(Date date) {
         this.releaseDate = date;
     }
+
+    @Override
+    public String toString() {
+        return "id:" + id + "; name: " + name + "; d:" + releaseDate;
+    }
 }

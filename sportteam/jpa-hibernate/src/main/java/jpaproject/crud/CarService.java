@@ -26,11 +26,11 @@ public class CarService {
         return carFromDb;
     }
 
-    public Car get(long id) {
+    public Car get(int id) {
         return em.find(Car.class, id);
     }
 
-    public void delete(long id) {
+    public void delete(int id) {
         em.getTransaction().begin();
         em.remove(get(id));
         em.getTransaction().commit();

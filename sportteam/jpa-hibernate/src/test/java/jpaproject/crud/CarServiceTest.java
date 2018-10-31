@@ -34,32 +34,44 @@ public class CarServiceTest {
     }
 
     @Test
-    public void testSelect() throws Exception {        Car car1 = new Car();
+    public void testSelect() throws Exception {
+        Car car1 = new Car();
         car1.setName("Citroen‎");
         car1.setCost(30000);
-        car1.setReleaseDate(new Date());        Car car = service.add(car1);        Car carFromDB = service.get(car.getId());
+        car1.setReleaseDate(new Date());
+        Car car = service.add(car1);
+        Car carFromDB = service.get(car.getId());
         System.out.println(carFromDB);
     }
 
     @Test
-    public void testUpdate() throws Exception {        Car car1 = new Car();
+    public void testUpdate() throws Exception {
+        Car car1 = new Car();
         car1.setName("Ford");
         car1.setCost(5000000);
-        car1.setReleaseDate(new Date());        car1 = service.add(car1);        car1.setCost(0);        service.update(car1);        Car car2 = service.get(car1.getId());
+        car1.setReleaseDate(new Date());
+        car1 = service.add(car1);
+        car1.setCost(0);
+        service.update(car1);
+        Car car2 = service.get(car1.getId());
         System.out.println(car2);
     }
 
     @Test
-    public void testGetAll(){        Car car1 = new Car();
+    public void testGetAll(){
+        Car car1 = new Car();
         car1.setName("Lexus");
         car1.setCost(300000);
-        car1.setReleaseDate(new Date());        Car car2 = new Car();
+        car1.setReleaseDate(new Date());
+        Car car2 = new Car();
         car2.setName("Fiat");
         car2.setCost(20000);
-        car2.setReleaseDate(new Date());        Car car3 = new Car();
+        car2.setReleaseDate(new Date());
+        Car car3 = new Car();
         car3.setName("Porsche");
         car3.setCost(458000);
-        car3.setReleaseDate(new Date());        service.add(car1);
+        car3.setReleaseDate(new Date());
+        service.add(car1);
         service.add(car2);
         service.add(car3);
         List<Car> cars = service.getAll();
