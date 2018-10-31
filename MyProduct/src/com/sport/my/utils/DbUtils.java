@@ -15,28 +15,26 @@ import java.util.List;
  * Created by sergii on 27.10.18.
  */
 public class DbUtils {
+    private static final String PRODUCT_COLUMN_ID = "id";
+    private static final String TABLE_NAME = "product_tbl_temp";
 
     public static List<Product> queryProduct(HttpServletRequest req) throws SQLException {
         Connection conn = Utils.getStoredConnection(req);
         if (conn == null) {
             return null;
         }
-        //product_id | product_name | product_price
-        String sql = "SELECT a.product_id, a.product_name, a.product_price FROM product_tbl a";
+        String sql = "SELECT a." + PRODUCT_COLUMN_ID + " , a.product_name, a.product_price FROM " + TABLE_NAME + " a";
 
         PreparedStatement pstm = conn.prepareStatement(sql);
 
         ResultSet rs = pstm.executeQuery();
         List<Product> result = new ArrayList<>();
         while(rs.next()) {
-            int code = rs.getInt("product_id");
+            int code = rs.getInt(PRODUCT_COLUMN_ID);
             String name = rs.getString("product_name");
             float price = rs.getFloat("product_price");
 
             Product product = new Product(code, name, price);
-//            product.setCode(code);
-//            product.setName(name);
-//            product.setPrice(price);
 
             result.add(product);
         }
@@ -49,7 +47,8 @@ public class DbUtils {
             return;
         }
 
-        String sql = "insert into product_tbl (product_name, product_price) values(?,?)";
+        String sql = "insert into " + TABLE_NAME + " (product_name, product_price) values(?,?)";
+
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, product.getName());
         pstm.setFloat(2, product.getPrice());
@@ -64,7 +63,7 @@ public class DbUtils {
 
     public static Product getProductBy(HttpServletRequest request, int id) {
         Connection conn = Utils.getStoredConnection(request);
-        String sql = "select product_name, product_price from product_tbl where product_id=?";
+        String sql = "select product_name, product_price from " + TABLE_NAME + " where " + PRODUCT_COLUMN_ID +"=?";
 
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -80,18 +79,11 @@ public class DbUtils {
             e.printStackTrace();
         }
         return null;
-
-        //String sql = "select a.Code, a.Name, a.Price from PRODUCT a where a.Code =?";
-
-//        PreparedStatement pstm = conn.prepareStatement(sql);
-//        pstm.setString(1, code);
-
-
     }
 
     public static void updateProduct(HttpServletRequest request, Product product) throws SQLException {
         Connection conn = Utils.getStoredConnection(request);
-        String sql = "update product_tbl set product_name=?, product_price =? where product_id=?";
+        String sql = "update " + TABLE_NAME + " set product_name=?, product_price =? where " + PRODUCT_COLUMN_ID + "=?";
 
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, product.getName());
@@ -99,12 +91,11 @@ public class DbUtils {
         pstm.setFloat(3, product.getCode());
 
         pstm.executeUpdate();
-
     }
 
     public static void deleteProduct(HttpServletRequest request, int id) throws SQLException {
         Connection conn = Utils.getStoredConnection(request);
-        String sql = "delete from product_tbl where product_id=?";
+        String sql = "delete from " + TABLE_NAME + " where " + PRODUCT_COLUMN_ID + "=?";
 
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, id);

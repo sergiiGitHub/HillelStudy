@@ -36,13 +36,7 @@ public class InsertProduct extends HttpServlet {
         }
         if (errorString == null) {
             try {
-                Object edit = request.getAttribute("edit");
-                if (edit == null) {
-                    DbUtils.insertProduct(request, product);
-                } else {
-
-                    request.removeAttribute("edit");
-                }
+                DbUtils.insertProduct(request, product);
             } catch (SQLException e) {
                 errorString = e.getMessage();
             }

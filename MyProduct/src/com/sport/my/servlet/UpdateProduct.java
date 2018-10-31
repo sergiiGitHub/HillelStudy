@@ -23,7 +23,6 @@ public class UpdateProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String code =  request.getParameter("code");
-        //System.out.println("UpdateProduct:code:" + code);
         String name =  request.getParameter("name");
         String priceStr = request.getParameter("price");
         float price = 0;
