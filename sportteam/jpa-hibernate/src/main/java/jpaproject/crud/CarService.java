@@ -18,7 +18,6 @@ public class CarService {
         em.getTransaction().begin();
         carFromDb = em.merge(car);
         try {
-
             em.getTransaction().commit();
         } catch (TransactionRequiredException | RollbackException ex){
             em.getTransaction().rollback();

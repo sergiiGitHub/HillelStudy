@@ -7,3 +7,8 @@ sportteam/jdbc/target/*
 
 MyProduct/.idea/*
 MyProduct/out/*
+
+MyProductJpa/.idea/*
+MyProductJpa/jpamodule/target/*
+MyProductJpa/out/*
+
