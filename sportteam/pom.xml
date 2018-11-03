@@ -18,6 +18,7 @@
     <properties>
         <compiler.version>3.3</compiler.version>
         <jdbc.version>5.1.9</jdbc.version>
+        <hibernate.vesrion>4.3.6.Final</hibernate.vesrion>
     </properties>
 
     <build>
@@ -48,6 +49,10 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${jdbc.version}</version>
         </dependency>
+
+
+
+
     </dependencies>
 
 </project>
