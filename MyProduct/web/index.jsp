@@ -10,5 +10,6 @@
 <body>
   <h1>Servlet : Filters</h1>
   <div> <a href="${pageContext.request.contextPath}/productList">Product</a>  </div>
+  <div> <a href="${pageContext.request.contextPath}/productListJpa">ProductJpa</a>  </div>
 </body>
 </html>
