@@ -50,9 +50,6 @@
             <version>${jdbc.version}</version>
         </dependency>
 
-
-
-
     </dependencies>
 
 </project>

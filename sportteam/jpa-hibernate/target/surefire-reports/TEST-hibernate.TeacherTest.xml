@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="jpaproject.crud.CarServiceTest" time="5.75" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="hibernate.TeacherTest" time="0" errors="0" skipped="3">
   <properties>
     <property name="idea.version" value="2016.2.5"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -62,9 +62,13 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="jpaproject.crud.CarServiceTest" name="testDeleteRecord" time="0.383"/>
-  <testcase classname="jpaproject.crud.CarServiceTest" name="testSaveRecord" time="0.071"/>
-  <testcase classname="jpaproject.crud.CarServiceTest" name="testGetAll" time="0.2"/>
-  <testcase classname="jpaproject.crud.CarServiceTest" name="testSelect" time="0.049"/>
-  <testcase classname="jpaproject.crud.CarServiceTest" name="testUpdate" time="0.173"/>
+  <testcase classname="hibernate.TeacherTest" name="testSaveTeacher" time="0.194">
+    <skipped/>
+  </testcase>
+  <testcase classname="hibernate.TeacherTest" name="testUpdateTeacher" time="0.194">
+    <skipped/>
+  </testcase>
+  <testcase classname="hibernate.TeacherTest" name="testDeleteTeacher" time="0.194">
+    <skipped/>
+  </testcase>
 </testsuite>

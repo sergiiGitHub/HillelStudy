@@ -4,6 +4,7 @@ sportteam/.idea/*
 *.jar
 *.lst
 sportteam/jdbc/target/*
+sportteam/jdbc/target/*
 
 MyProduct/.idea/*
 MyProduct/out/*

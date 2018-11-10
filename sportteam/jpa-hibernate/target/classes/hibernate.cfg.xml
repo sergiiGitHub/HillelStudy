@@ -11,9 +11,22 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sportteamhibernate</property>
         <property name="show_sql">true</property>
         <property name="format_sql">false</property>
+        <!--create table it it does not exist-->
+        <!--<property name="hibernate.current_session_context_class">thread</property>-->
+        <!--<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>-->
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping resource="hibernate/model/Student.hbm.xml"/>
+        <!--<mapping resource="hibernate/model/Student.hbm.xml"/>-->
+        <mapping class="hibernate.model.Student"/>
         <mapping class="hibernate.model.Teacher"/>
+        <mapping class="hibernate.model.Address"/>
+        <mapping class="hibernate.model.TeacherAddress"/>
+        <mapping class="hibernate.model.Director"/>
+        <mapping class="hibernate.model.DirectorAddress"/>
+        <mapping class="hibernate.model.University"/>
+        <mapping class="hibernate.model.TeacherUniversity"/>
+        <mapping class="hibernate.model.Subject"/>
+
+
     </session-factory>
 
 </hibernate-configuration>

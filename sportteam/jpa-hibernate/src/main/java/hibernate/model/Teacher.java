@@ -1,6 +1,8 @@
 package hibernate.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sergii on 02.11.18.
@@ -11,10 +13,10 @@ import javax.persistence.*;
 @SuppressWarnings("all")
 public class Teacher {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)//default
-    private int id;
+    @Column(name = "TEACHER_ID")
+    private long id;
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -25,11 +27,51 @@ public class Teacher {
     @Column(name = "SESION")
     private String section;
 
-    public int getId() {
+    @OneToOne
+    @JoinColumn(name = "HOME_ADDRESS_ID")
+    private TeacherAddress teacherAddress;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "UNIVERSITY_ID")
+    private TeacherUniversity teacherUniversity;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "TEACHER_SUBJECT",
+            joinColumns = {@JoinColumn(name = "TEACHER_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
+    private List<Subject> subjects = new ArrayList<>();
+
+    public Teacher(String firstName, String lastName, String section) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.section = section;
+    }
+
+    public Teacher() {
+
+    }
+
+    public TeacherAddress getTeacherAddress() {
+        return teacherAddress;
+    }
+
+    public void setTeacherAddress(TeacherAddress teacherAddress) {
+        this.teacherAddress = teacherAddress;
+    }
+
+    public TeacherUniversity getTeacherUniversity() {
+        return teacherUniversity;
+    }
+
+    public void setTeacherUniversity(TeacherUniversity teacherUniversity) {
+        this.teacherUniversity = teacherUniversity;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -55,6 +97,14 @@ public class Teacher {
 
     public void setSection(String section) {
         this.section = section;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 
     @Override

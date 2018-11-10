@@ -125,3 +125,5 @@ create table seller (
    salary float DEFAULT NULL,
    PRIMARY KEY ( product_id )
 );
+
+DROP TABLE STUDENT;

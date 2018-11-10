@@ -1,7 +1,7 @@
 package hibernate;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
  * Created by sergii on 02.11.18.
@@ -12,11 +12,10 @@ public class HibernateUtils {
 
     static {
         try {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
+            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Exception ex) {
-            System.err.println("Sesiotn could not create" + ex);
+            System.err.println("Session could not create" + ex);
         }
-
     }
 
     public static SessionFactory getSessionFactory() {

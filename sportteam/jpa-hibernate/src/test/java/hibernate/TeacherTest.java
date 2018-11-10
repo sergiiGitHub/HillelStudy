@@ -2,12 +2,15 @@ package hibernate;
 
 import hibernate.model.Teacher;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * Created by sergii on 02.11.18.
  */
 public class TeacherTest {
+
+    @Ignore
     @Test
     public void testSaveTeacher() throws Exception {
         Teacher teacher = new Teacher();
@@ -22,6 +25,7 @@ public class TeacherTest {
         Assert.assertEquals(teacherFromDb, teacher);
     }
 
+    @Ignore
     @Test
     public void testDeleteTeacher() throws Exception {
         Teacher teacher = new Teacher();
@@ -36,6 +40,7 @@ public class TeacherTest {
         Assert.assertEquals(deleteTeacher, teacher);
     }
 
+    @Ignore
     @Test
     public void testUpdateTeacher() throws Exception {
         Teacher teacher = new Teacher();
