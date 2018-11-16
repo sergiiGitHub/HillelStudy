@@ -13,3 +13,6 @@ MyProductJpa/.idea/*
 MyProductJpa/jpamodule/target/*
 MyProductJpa/out/*
 
+spring-hello/.idea/*
+spring-hello/target/*
+
