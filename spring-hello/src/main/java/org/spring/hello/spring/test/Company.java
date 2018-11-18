@@ -17,11 +17,16 @@ public class Company {
     Employee accounter;
 
     @Autowired
-    @Qualifier("enginear")
-    Employee enginear;
+    @Qualifier("engineer")
+    Employee engineer;
 
-    @Override
-    public String toString() {
-        return super.toString();
+    @Autowired
+    @Qualifier("manager")
+    Employee manager;
+
+    public void show() {
+        accounter.showPayrate();
+        engineer.showPayrate();
+        manager.showPayrate();
     }
 }

@@ -6,6 +6,7 @@ import org.spring.hello.spring.domain.autowiring.annotation.by_type.Programmer;
 import org.spring.hello.spring.domain.autowiring.annotation.qualifier.Bond;
 import org.spring.hello.spring.domain.autowiring.constructor.Performer;
 import org.spring.hello.spring.domain.autowiring.no.Driver;
+import org.spring.hello.spring.test.Company;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -56,8 +57,11 @@ public class AppMain {
 //        Programmer programmer = (Programmer) context.getBean("programmer");
 //        System.out.println(programmer);
 
-        Bond bond = (Bond) context.getBean("bond");
-        bond.showCar();
+        //Bond bond = (Bond) context.getBean("bond");
+        //bond.showCar();
+
+        Company company = (Company) context.getBean("company");
+        company.show();
 
         context.close();
     }

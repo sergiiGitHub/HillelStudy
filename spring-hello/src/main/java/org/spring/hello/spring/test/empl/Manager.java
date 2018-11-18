@@ -8,10 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Manager implements Employee {
 
+    private static final String TAG = Manager.class.getSimpleName();
     private int payRate = 200;
 
     @Override
     public void showPayrate() {
-        System.out.println("pr:" + payRate);
+        System.out.println(TAG + "; pr:" + payRate);
     }
 }

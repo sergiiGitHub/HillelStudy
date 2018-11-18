@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Accounter implements Employee {
 
+    private static final String TAG = Accounter.class.getSimpleName();
+
     private int payRate = 100;
 
     public Accounter() {
@@ -16,6 +18,6 @@ public class Accounter implements Employee {
 
     @Override
     public void showPayrate() {
-        System.out.println("pr:" + payRate);
+        System.out.println(TAG + ": pr:" + payRate);
     }
 }
