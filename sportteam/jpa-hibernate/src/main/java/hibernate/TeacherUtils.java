@@ -50,5 +50,6 @@ public class TeacherUtils {
         teacherDb.setSection(teacher.getSection());
 
         session.getTransaction().commit();
+        session.close();
     }
 }
