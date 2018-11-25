@@ -18,4 +18,5 @@ public interface VehicleDao {
     Vehicle findByVehicle(String vehicleNo);
 
     List<Vehicle> findAll();
+
 }

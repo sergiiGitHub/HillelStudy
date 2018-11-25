@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <name>spring_hello</name>
     <properties>
-        <springframework.version>4.3.2.RELEASE</springframework.version>
+        <springframework.version>5.0.8.RELEASE</springframework.version>
         <jdbc.version>5.1.9</jdbc.version>
         <hibernate.vesrion>4.3.6.Final</hibernate.vesrion>
     </properties>
@@ -67,6 +67,13 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${jdbc.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
