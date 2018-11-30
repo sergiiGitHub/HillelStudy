@@ -16,5 +16,8 @@ MyProductJpa/out/*
 spring-hello/.idea/*
 spring-hello/target/*
 
+spring_hibernate/.idea/*
+spring_hibernate/target/*
+
 Temp/.idea/*
 
