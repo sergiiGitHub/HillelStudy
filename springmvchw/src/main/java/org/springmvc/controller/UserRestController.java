@@ -57,7 +57,7 @@ public class UserRestController {
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
 
-        userService.createUser(user);
+        userService.saveUser(user);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
@@ -98,7 +98,7 @@ public class UserRestController {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
 
-        userService.deleteUserById(id);
+        userService.deleteUserBy(id);
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
 

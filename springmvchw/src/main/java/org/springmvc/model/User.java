@@ -1,11 +1,22 @@
 package org.springmvc.model;
 
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity(name = "USER")
+@Table(name = "USER")
 public class User {
 
+    @Id
     private long id;
+    @Column(name = "LOGIN", nullable = false)
     private String login;
+    @Column(name = "NAME", nullable = false)
     private String name;
+
+    @Column(name = "AGE", nullable = false)
     private int age;
+    @Column(name = "SALARY", nullable = false)
     private int salary;
 
     public User(long id, String login, String name, int age, int salary) {
@@ -61,11 +72,13 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof User) {
-            User other = (User) obj;
-            return other.id == id;
-        }
-        return false;
+    public int hashCode() {
+        return  Objects.hashCode(getId());
     }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", name=" + name + ", salary=" + salary + ", age=" + age + "]";
+    }
+
 }
