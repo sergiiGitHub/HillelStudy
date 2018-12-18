@@ -9,7 +9,7 @@ import org.springmvc.model.User;
 
 import java.util.List;
 
-//@Transactional
+@Transactional
 @Repository
 public class UserDaoImpl extends Dao implements UserDao {
 
@@ -18,7 +18,6 @@ public class UserDaoImpl extends Dao implements UserDao {
         persist(employee);
     }
 
-    @Transactional
     public List<User> findAllUsers() {
         Criteria criteria = getSession().createCriteria(User.class);
         return (List<User>) criteria.list();
@@ -43,7 +42,8 @@ public class UserDaoImpl extends Dao implements UserDao {
 
     @Override
     public void deleteBy(long id) {
-        Query query = getSession().createQuery("delete from EMPLOYEE where id = :id");
+        Query query = getSession().createQuery("delete from USER where id = :id");
         query.setLong("id", id);
+        query.executeUpdate();
     }
 }
