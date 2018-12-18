@@ -4,20 +4,21 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springmvc.model.User;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
-@Transactional
+//@Transactional
 @Repository
 public class UserDaoImpl extends Dao implements UserDao {
-    @Override
+
+
     public void saveUser(User employee) {
         persist(employee);
     }
 
-    @Override
+    @Transactional
     public List<User> findAllUsers() {
         Criteria criteria = getSession().createCriteria(User.class);
         return (List<User>) criteria.list();

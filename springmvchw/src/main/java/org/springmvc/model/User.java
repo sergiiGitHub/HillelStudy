@@ -9,11 +9,10 @@ public class User {
 
     @Id
     private long id;
-    @Column(name = "LOGIN", nullable = false)
-    private String login;
     @Column(name = "NAME", nullable = false)
     private String name;
-
+    @Column(name = "LOGIN", nullable = false)
+    private String login;
     @Column(name = "AGE", nullable = false)
     private int age;
     @Column(name = "SALARY", nullable = false)
